@@ -29,10 +29,10 @@ f. int dotProduct(int[] arr1, int[] arr2) – this function should input two arr
 g. int minArray(int[] arr) – this function should input an array of integers and return an integer which represents the SMALLEST value in the array. Take a look back at ForMaxMin if you forgot how to do this. So minArray({3,2,4}) should return 2.
 
 
-h. maxArray(int[] arr) - this function should input an array of integers and return an integer which represents the LARGEST value in the array. So maxArray({3,2,4}) should return 4.
+h. int maxArray(int[] arr) - this function should input an array of integers and return an integer which represents the LARGEST value in the array. So maxArray({3,2,4}) should return 4.
 
 
-i. printArray(int[] arr) – this void function should input an array of integers and print out the array (as you may recall, printing a whole array prints out the memory location. This method provides a way to print it out in a more useful way). Using System.out.print() statements on the individual elements of the array, you may do this however you want.  (you can use the + command to concatenate) For example, you may have it print out in the normal {2,3,4,5} format or anything else you like. This function is void so it shouldn’t return anything.
+i. void printArray(int[] arr) – this void function should input an array of integers and print out the array (as you may recall, printing a whole array prints out the memory location. This method provides a way to print it out in a more useful way). Using System.out.print() statements on the individual elements of the array, you may do this however you want.  (you can use the + command to concatenate) For example, you may have it print out in the normal {2,3,4,5} format or anything else you like. This function is void so it shouldn’t return anything.
 
 
 j. int randomEntry(int[] arr) - this method will input an array of ints and return a random int from that array. It should be different each time. So if the input is {4,66,23,-43} this method should randomly choose one of these spots and return 4,66,23, or -43. Make sure to test this code several times to make sure that it returns different values and never causes an out of bounds error!
