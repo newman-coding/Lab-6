@@ -1,5 +1,7 @@
 # Lab-6
 
+For ALL of the following methods, you should NOT destroy or alter the original array.
+
 Part One - NumArray: This class will have a bunch of methods dealing with arrays of numbers. Please write the following methods :
 
 1. int sumUp(int[] arr) – this method should take an array of ints (int[]) and return an int. The return value represents the sum of all of the elements in the array. 
