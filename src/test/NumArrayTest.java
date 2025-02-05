@@ -1,25 +1,29 @@
 package src.test;
-import org.junit.Assert;
-import org.junit.Test;
+import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth.assertWithMessage;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.TestMethodOrder;
+
 
 import src.main.NumArray;
 
 import java.io.*;
 
-public class TestNumArray {
+@TestMethodOrder(MethodOrder.OrderAnnotation.class)
+public class NumArrayTest {
   private int[] testArr = {5, 2, 1, 7, 9};
   //private int[] testNull = null;
   private int[] testNil = {0, 0, 0};
   private int[] testOne = {5};
 
   @Test
-  public void testSumUp()
-  {
+  @Order(0)
+  @DisplayName("Test sumUp correctness") 
+  public void testSumUp(){
     int[] t1 = {5, 2, 1, 7, 9};
     int[] t2 = {7, 6, -5, 4, -8};
     // action
@@ -42,16 +46,17 @@ public class TestNumArray {
     // assertion
     assertEquals(5, test);
 
-   }
+  }
 
-   @Test
-   public void testUnderTen()
-   {
+  @Test
+  @Order(1)
+  @DisplayName("Test underTen correctness") 
+  public void testUnderTen() {
     double[] t1 = {5.5, 2.0, 11.9, 10.1, 9.9};
     double[] t2 = {7.0, 6.0, -5.0, 4.0, -8.0};
     double[] t3 = {17.0, 62.3, 9.2, 10.0, -88.8, 1.0};
     double[] t4 = {10.5, 10.6, 10.7};
-     // action
+    // action
     int test = NumArray.underTen(t1);
     // assertion
     assertEquals(3, test);
@@ -71,11 +76,12 @@ public class TestNumArray {
     // assertion
     assertEquals(0, test);
 
-   }
+  }
 
-   @Test
-   public void testScalarMult()
-   {
+  @Test
+  @Order(2)
+  @DisplayName("Test scalarMult correctness") 
+  public void testScalarMult(){
     int[] t1 = {5, 2, 1, 7, 9};
     int[] t2 = {7, 6, -5, 4, -8};
 
@@ -111,9 +117,10 @@ public class TestNumArray {
 
    }
 
-   @Test
-   public void testVectorAdd()
-   {
+  @Test
+  @Order(3)
+  @DisplayName("Test vectorAdd correctness") 
+  public void testVectorAdd(){
     int[] t1 = {3, 4, 5};
     int[] t2 = {6, 3, 0};
     // action
@@ -153,12 +160,12 @@ public class TestNumArray {
     int[] r4 = {6, 3, 0};
     // assertion
     assertArrayEquals(r4, test);
+  }
 
-   }
-
-   @Test
-   public void testDotProduct()
-   {
+  @Test
+  @Order(4)
+  @DisplayName("Test dotProduct correctness") 
+  public void testDotProduct(){
     int[] t1 = {2, 3, 5};
     int[] t2 = {6, 4, 1};
     int[] t3 = {2, 2, 2};
@@ -209,6 +216,8 @@ public class TestNumArray {
 
    }
    @Test
+   @Order(5)
+  @DisplayName("Test minArray correctness") 
    public void testMinArray()
    {
     int[] t1 = {2, 3, 5};
@@ -245,11 +254,12 @@ public class TestNumArray {
     // assertion
     assertEquals(0, test);
 
-   }
+  }
 
-   @Test
-   public void testMaxArray()
-   {
+  @Test
+  @Order(6)
+  @DisplayName("Test maxArray correctness") 
+  public void testMaxArray(){
     int[] t1 = {2, 3, 5};
     int[] t2 = {6, 4, 1};
     int[] t3 = {2, 2, 2};
@@ -283,16 +293,19 @@ public class TestNumArray {
     test = NumArray.maxArray(testNil);
     // assertion
     assertEquals(0, test);
-   }
+  }
    
-   @Test
-   public void testRandomEntry(){
+  @Test
+  @Order(7)
+  @DisplayName("Test sumUp correctness") 
+  public void testRandomEntry(){
 
-   }
+  }
 
-   @Test
-   public void testSubArray()
-   {
+  @Test
+  @Order(8)
+  @DisplayName("Test sumUp correctness") 
+  public void testSubArray(){
     int[] t1 = {2, 3, 5, 7, 9};
     int[] t2 = {0, 1, 1, 2, 3, 5, 8};
     int[] t3 = {2, 2, 2, 2, 2};
@@ -321,6 +334,6 @@ public class TestNumArray {
     // assertion
     assertEquals(r4, test);
 
-   }
+  }
 
 }

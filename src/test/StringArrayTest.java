@@ -1,30 +1,40 @@
 package src.test;
-import org.junit.Assert;
-import org.junit.Test;
+import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth.assertWithMessage;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import src.main.StringArray;
 
 import java.io.*;
 
-public class TestStringArray {
+@TestMethodOrder(MethodOrder.OrderAnnotation.class)
+public class StringArrayTest {
 
     @Test
-    public void testCapsLock() // in: str array; out: str array, all capitalized
-    {
+    @Order(0)
+    @DisplayName("Test capsLock correctness")
+    public void testCapsLock() {
         String[] s1 = {"hello", "world", "It's me!", "Mario"};
-        String[] r1 = {"HELLO", "WORLD", "IT'S ME!", "MARIO"};
+        //String[] expected1 = {"HELLO", "WORLD", "IT'S ME!", "MARIO"};
         // action
         String[] test = StringArray.capsLock(s1);
         // assertion
-        assertArrayEquals(r1, test);
+        assertThat(test).isNotNull();
+        assertThat(test.length).isEqualTo(4);
+        assertThat(test).containsExactly("HELLO", "WORLD", "IT'S ME!", "MARIO").inOrder();
+        /*for (int i=0; i<4; i++) {
+            assertThat(test[i]).isEqualTo(expected1[i]);
+        }*/
     }
 
     @Test
+    @Order(1)
+    @DisplayName("Test allEqual correctness")
     public void testAllEqual() //in: two str arrays, same shape; out: bool, if all elements String.equal, catch: diff shape - return false
     {
         String[] s1 = {"hello", "world", "It's me!", "Mario"};
@@ -39,6 +49,8 @@ public class TestStringArray {
     }
 
     @Test
+    @Order(2)
+    @DisplayName("Test swap correctness")
     public void testSwap() //in: str array, i1, i2; out: str array w/ new[i1] = str[12]; new[i2] = str[i1]
     {
         String[] s1 = {"hello", "world", "It's me!", "Mario"};
@@ -62,7 +74,7 @@ public class TestStringArray {
         test = StringArray.swap(s1, 1, 1);
         //assertion
         assertArrayEquals(r2, test);
-        
+
         //action
         test = StringArray.swap(s1, 0, 1);
         //assertion
@@ -71,6 +83,8 @@ public class TestStringArray {
     }
 
     @Test
+    @Order(3)
+    @DisplayName("Test reverse correctness")
     public void testReverse() //in: str array; out: str array w/ order reversed
     {
         String[] s1 = {"hello", "world", "It's me!", "Mario"};
@@ -100,6 +114,8 @@ public class TestStringArray {
     }
 
     @Test
+    @Order(4)
+    @DisplayName("Test combineAll correctness")
     public void testCombineAll() //in: str array; out: str concat of all elements
     {
         String[] s1 = {"hello", "world", "It's me!", "Mario"};
@@ -129,6 +145,8 @@ public class TestStringArray {
     }
     
     @Test
+    @Order(5)
+    @DisplayName("Test searchString correctness")
     public void testSearchString() //in: str array, str; out: prints all elements w/ str as substring and returns num results
     {
         // set output binding
@@ -170,6 +188,8 @@ public class TestStringArray {
     }
     
     @Test
+    @Order(6)
+    @DisplayName("Test longest correctness")
     public void testLongest() //in: str array; out: longest str
     {
         String[] names = {"annie oakley", "creola katherine johnson", "david lynch"};

@@ -8,31 +8,27 @@ public class NumArray {
      * @return sum of array a
      */
     public static int sumUp(int[] arr){
-
+        return 0;
     }
 
     public static int underTen(double[] arr){
-
+        return 0;
     }
 
     public static int[] scalarMult(int[] arr, int scalar){ 
-
+        return arr;
     }
 
     public static int[] vectorAdd(int[] arr1, int[] arr2){ 
-
-    }
-
-    public static int[] vectorSubtract(int[] arr1, int[] arr2){ 
-
+        return arr1;
     }
 
     public static int dotProduct(int[] arr1, int[] arr2){ 
-
+        return 0;
     }
 
     public static int minArray(int[] arr){ 
-
+        return 0;
     }
 
     public static void printArray(int[] arr){ 
@@ -40,11 +36,11 @@ public class NumArray {
     }
 
     public static int randomEntry(int[] arr){ 
-
+        return 0;
     }
 
     public static int[] subArray(int[] nums, int start, int end){
-
+        return nums;
     }
     
 }
