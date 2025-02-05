@@ -62,39 +62,57 @@ Optional Extra Credit: <p>
 
 
 ## Part Two - StringArray:
-This class will have a bunch of methods dealing with arrays of Strings. Please write the following methods:
+This class will have a set of methods dealing with arrays of Strings. Please write the following methods:
 
 1. String[] capsLock(String[] a) – this method should input an array of Strings, and return an array of Strings consisting of the same strings, only in uppercase. Hint: .toUpperCase(). So if you send {"happy", "sad", "Bob"}, it should return {"HAPPY", "SAD", "BOB"}.
-
+```java
+String[] words = {"happy", "sad", "Bob"}
+capsLock(words) //should return {"HAPPY", "SAD", "BOB"}
+```
 
 2. boolean allEqual(String[] b1, String[] b2) – this function should input two arrays of Strings and return a boolean that is true if the two arrays have exactly identical entries (in the same order), and false if not. If the arrays have different sizes, this should automatically return false and not cause a runtime error. Remember to use .equals() to compare Strings.
 
 
 3. String[] swap(String[] words, int spot1, int spot2) - this method inputs an array of Strings and 2 ints (in that order), then switches the elements in spot1 and spot2 and returns an array of Strings. It should not change any other elements. Remember, this method should be NON-DESTRUCTIVE.
-So if you call swap({"bob","jim","al", "joe","sam"},1,3), it swaps the elements in spot 1 and spot 3 and returns the array {"bob","joe","al", "jim","sam"}. I should get the same result if I switch the order of 1 and 3 and called swap({"bob","jim","al", "joe","sam"},3,1). 
-
+```java
+String[] students = {"Rohan", "Julia", "Shania", "Lewis", "Ashley"};
+swap(students, 1, 3) // should return {"Rohan", "Lewis", "Shania", "Julia", "Ashley"}
+//NOTE: swap(students, 3, 1) should return the same thing!
+```
 
 4. String[] reverse(String[] d) – this method should input an array of Strings, and return an array of Strings that is identical to the input, only in reverse order. Remember, this method should be NON-DESTRUCTIVE.
- For instance, if you send {"happy", "sad", "bored"}, the method should return {"bored","sad","happy"}.
-
+```java
+String[] words = {"happy", "sad", "bored"};
+reverse(words) // should return {"bored","sad","happy"}
+```
   Hint: make 2 int variables to keep track of where you are in each array
 
 
-5. String combineAll(String[] e) - this method should input an array of Strings and return a String. The string it returns should be the concatenation of all the Strings in the input. So if I call combineAll( {"yes", "hello there", "class"}) your method should return the String "yeshello thereclass"
-
-
-6. int searchString(String[] terms, String search) – this method should input an array of Strings and a string, and it should return an int. The method should print out each string from the array which contains the second String as a substring, and then return the number of Strings which contain the substring (so the inputs are a String[] and a String, and it outputs an int). For instance if you send the function the array {"happy", "ap computer science", "bop"} and the String "ap", your program should print out:
+5. String combineAll(String[] e) - this method should input an array of Strings and return a String. The string it returns should be the concatenation of all the Strings in the input.
 ```java
-happy
-ap computer science
+String[] words = {"hello", "ap computer science", "class"};
+combineAll(words) // should return "helloap computer scienceclass" 
+```
+
+6. int searchString(String[] terms, String search) – this method should input an array of Strings and a String, and it should return an int. The method should **print**  each String from the array which contains the search String as a substring, and then **return** the total number of Strings which contain the substring.
+```java
+String[] words = {"happy", "ap computer science", "bop"};
+searchString(words, "ap") 
+
+// should print the following:
+  happy
+  ap computer science
 
 //Then it should return 2, since there were 2 results found
 ```
   Hint: String method .indexOf( ).
 
 
-7. String longest(String[] g) - this method should input an array of Strings and then return the String with the longest length (in case of a tie, you should return the first one). So if I call longest({"annie oakley", "creola katherine johnson", "david lynch"}), this method should return "creola katherine johnson".
-
+7. String longest(String[] g) - this method should input an array of Strings and then return the String with the longest length (in case of a tie, you should return the first one).
+```java
+String[] names = {"annie oakley", "creola katherine johnson", "david lynch"};
+longest(names) // should return "creola katherine johnson".
+```
   Hint: it may be useful to find the location of the longest String first. 
 
 
