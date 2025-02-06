@@ -2,6 +2,7 @@ package src.test;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
@@ -13,7 +14,7 @@ import src.main.NumArray;
 
 import java.io.*;
 
-@TestMethodOrder(MethodOrder.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class NumArrayTest {
   private int[] testArr = {5, 2, 1, 7, 9};
   //private int[] testNull = null;
@@ -29,22 +30,22 @@ public class NumArrayTest {
     // action
     int test = NumArray.sumUp(t1);
     // assertion
-    assertEquals(24, test);
+    assertThat(test).equals(24);
 
     // action
     test = NumArray.sumUp(t2);
     // assertion
-    assertEquals(4, test);
+    assertThat(test).equals(4);
 
     // action
     test = NumArray.sumUp(testNil);
     // assertion
-    assertEquals(0, test);
+    assertThat(test).equals(0);
 
     // action
     test = NumArray.sumUp(testOne);
     // assertion
-    assertEquals(5, test);
+    assertThat(test).equals(5);
 
   }
 
@@ -59,22 +60,22 @@ public class NumArrayTest {
     // action
     int test = NumArray.underTen(t1);
     // assertion
-    assertEquals(3, test);
+    assertThat(test).equals(3);
 
     // action
     test = NumArray.underTen(t2);
     // assertion
-    assertEquals(5, test);
+    assertThat(test).equals(5);
 
     // action
     test = NumArray.underTen(t3);
     // assertion
-    assertEquals(3, test);
+    assertThat(test).equals(3);
 
     // action
     test = NumArray.underTen(t4);
     // assertion
-    assertEquals(0, test);
+    assertThat(test).equals(0);
 
   }
 
@@ -89,31 +90,31 @@ public class NumArrayTest {
     int[] test = NumArray.scalarMult(t1, 1);
     int[] r1 = {5, 2, 1, 7, 9};
     // assertion
-    assertArrayEquals(r1, test);
+    assertThat(check(r1, test)).isTrue();
 
     // action
     test = NumArray.scalarMult(t1, 2);
     int[] r2 = {10, 4, 2, 14, 18};
     // assertion
-    assertArrayEquals(r2, test);
+    assertThat(check(r2, test)).isTrue();
 
     // action
     test = NumArray.scalarMult(t2, 3);
     int[] r3 = {21, 18, -15, 12, -24};
     // assertion
-    assertArrayEquals(r3, test);
+    assertThat(check(r3, test)).isTrue();
 
     // action
     test = NumArray.scalarMult(testOne, 5);
     int[] r4 = {25};
     // assertion
-    assertArrayEquals(r4, test);
+    assertThat(check(r4, test)).isTrue();
 
     // action
     test = NumArray.scalarMult(testNil, 5);
     int[] r5 = {0, 0, 0};
     // assertion
-    assertArrayEquals(r5, test);
+    assertThat(check(test, r5)).isTrue();
 
    }
 
@@ -127,12 +128,12 @@ public class NumArrayTest {
     int[] test = NumArray.vectorAdd(t1, t2);
     int[] r1 = {9, 7, 5};
     // assertion
-    assertArrayEquals(r1, test);
+    assertThat(check(r1, test)).isTrue();
 
     // action
     test = NumArray.vectorAdd(t2, t1);
     // assertion
-    assertArrayEquals(r1, test);
+    assertThat(check(r1, test)).isTrue();
 
     // EDGE CASE: set output binding
     PrintStream originalOut = System.out;
@@ -143,8 +144,9 @@ public class NumArrayTest {
     test = NumArray.vectorAdd(t1, testArr);
     int[] r2 = {0};
     // assertion
-    assertNotNull(bos.toString());
-    assertArrayEquals(r2, test);
+    assertThat(bos.toString()).isNotNull();
+    assertThat(check(r2, test)).isTrue();
+
 
     // UNDO output binding in System
     System.setOut(originalOut);
@@ -153,13 +155,13 @@ public class NumArrayTest {
     test = NumArray.vectorAdd(testOne, testOne);
     int[] r3 = {10};
     // assertion
-    assertArrayEquals(r3, test);
+    assertThat(check(r3, test)).isTrue();
 
     // action
     test = NumArray.vectorAdd(testNil, t2);
     int[] r4 = {6, 3, 0};
     // assertion
-    assertArrayEquals(r4, test);
+    assertThat(check(r4, test)).isTrue();
   }
 
   @Test
@@ -173,22 +175,22 @@ public class NumArrayTest {
     // action
     int test = NumArray.dotProduct(t1, t2);
     // assertion
-    assertEquals(29, test);
+    assertThat(test).equals(29);
 
     // action
     test = NumArray.dotProduct(t2, t1);
     // assertion
-    assertEquals(29, test);
+    assertThat(test).equals(29);
 
     // action
     test = NumArray.dotProduct(t1, t3);
     // assertion
-    assertEquals(20, test);
+    assertThat(test).equals(20);
 
     // action
     test = NumArray.dotProduct(t4, t3);
     // assertion
-    assertEquals(0, test);
+    assertThat(test).equals(0);
 
     // EDGE CASE: set output binding
     PrintStream originalOut = System.out;
@@ -198,8 +200,8 @@ public class NumArrayTest {
     // action
     test = NumArray.dotProduct(testArr, t1);
     // assertion
-    assertNotNull(bos.toString());
-    assertEquals(Integer.MIN_VALUE, test);
+    assertThat(bos.toString()).isNotNull();
+    assertThat(test).equals(Integer.MIN_VALUE);
 
     // UNDO output binding in System
     System.setOut(originalOut);
@@ -207,14 +209,15 @@ public class NumArrayTest {
     // action
     test = NumArray.dotProduct(testOne, testOne);
     // assertion
-    assertEquals(25, test);
+    assertThat(test).equals(25);
 
     // action
     test = NumArray.dotProduct(testNil, t2);
     // assertion
-    assertEquals(0, test);
+    assertThat(test).equals(0);
 
    }
+
    @Test
    @Order(5)
   @DisplayName("Test minArray correctness") 
@@ -227,32 +230,32 @@ public class NumArrayTest {
     // action
     int test = NumArray.minArray(t1);
     // assertion
-    assertEquals(2, test);
+    assertThat(test).equals(2);
 
     // action
     test = NumArray.minArray(t2);
     // assertion
-    assertEquals(1, test);
+    assertThat(test).equals(1);
 
     // action
     test = NumArray.minArray(t3);
     // assertion
-    assertEquals(2, test);
+    assertThat(test).equals(2);
 
     // action
     test = NumArray.minArray(t4);
     // assertion
-    assertEquals(-1, test);
+    assertThat(test).equals(-1);
 
     // action
     test = NumArray.minArray(testOne);
     // assertion
-    assertEquals(5, test);
+    assertThat(test).equals(5);
 
     // action
     test = NumArray.minArray(testNil);
     // assertion
-    assertEquals(0, test);
+    assertThat(test).equals(0);
 
   }
 
@@ -267,44 +270,44 @@ public class NumArrayTest {
     // action
     int test = NumArray.maxArray(t1);
     // assertion
-    assertEquals(5, test);
+    assertThat(test).equals(5);
 
     // action
     test = NumArray.maxArray(t2);
     // assertion
-    assertEquals(6, test);
+    assertThat(test).equals(6);
 
     // action
     test = NumArray.maxArray(t3);
     // assertion
-    assertEquals(2, test);
+    assertThat(test).equals(2);
 
     // action
     test = NumArray.maxArray(t4);
     // assertion
-    assertEquals(1, test);
+    assertThat(test).equals(1);
 
     // action
     test = NumArray.maxArray(testOne);
     // assertion
-    assertEquals(5, test);
+    assertThat(test).equals(5);
 
     // action
     test = NumArray.maxArray(testNil);
     // assertion
-    assertEquals(0, test);
+    assertThat(test).equals(0);
   }
    
   @Test
   @Order(7)
-  @DisplayName("Test sumUp correctness") 
+  @DisplayName("Test randomEntry correctness") 
   public void testRandomEntry(){
 
   }
 
   @Test
   @Order(8)
-  @DisplayName("Test sumUp correctness") 
+  @DisplayName("Test subArray correctness") 
   public void testSubArray(){
     int[] t1 = {2, 3, 5, 7, 9};
     int[] t2 = {0, 1, 1, 2, 3, 5, 8};
@@ -314,26 +317,50 @@ public class NumArrayTest {
     int[] test = NumArray.subArray(t1, 0, 3);
     int[] r1 = {2, 3, 5};
     // assertion
-    assertArrayEquals(r1, test);
+    assertThat(check(r1, test)).isTrue();
 
     // action
-    test = NumArray.subArray(t2, 2, t.length - 1);
+    test = NumArray.subArray(t2, 2, t2.length - 1);
     int[] r2 = {1, 2, 3, 5, 8};
     // assertion
-    assertEquals(r2, test);
+    assertThat(check(r2, test)).isTrue();
 
     // action
     test = NumArray.subArray(t2, 2, 5);
     int[] r3 = {1, 2, 3};
     // assertion
-    assertEquals(r3, test);
+    assertThat(check(r3, test)).isTrue();
 
     // action
     test = NumArray.subArray(t1, 0, 1);
     int[] r4 = {2};
     // assertion
-    assertEquals(r4, test);
+    assertThat(check(r4, test)).isTrue();
 
+  }
+
+  public static boolean check(int[] expected, int[] actual) {
+    if(actual == null) {
+        System.out.format("Your \"actual\" array is null. Have you implemented the method you are testing?\n\n");
+        return false;
+    }
+    if (expected.length != actual.length) {
+        System.out.format("Array length did not match expected length:\n"
+                + "      Expected: %d\n"
+                + "      Got: %d\n",
+                expected.length, actual.length);
+        return false;
+    }
+    for (int k = 0; k < expected.length; k++) {
+        if (expected[k] != actual[k]) {
+            System.out.format("Array contents different at index %d:\n"
+                    + "    Expected: %d\n"
+                    + "    Got: %d\n",
+                    k, expected[k], actual[k]);
+            return false;
+        }
+    }
+    return true;
   }
 
 }

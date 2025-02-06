@@ -10,6 +10,18 @@ dependencies {
 	testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
 	testImplementation('com.google.truth:truth:1.4.4')
 }
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+    test {
+        java {
+            srcDir 'tests'
+        }
+    }
+}
 
 test {
 	useJUnitPlatform()

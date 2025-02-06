@@ -31,6 +31,10 @@ public class NumArray {
         return 0;
     }
 
+    public static int maxArray(int[] arr){ 
+        return 0;
+    }
+
     public static void printArray(int[] arr){ 
 
     }

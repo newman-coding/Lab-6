@@ -4,6 +4,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -12,7 +13,7 @@ import src.main.StringArray;
 
 import java.io.*;
 
-@TestMethodOrder(MethodOrder.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class StringArrayTest {
 
     @Test
@@ -20,16 +21,13 @@ public class StringArrayTest {
     @DisplayName("Test capsLock correctness")
     public void testCapsLock() {
         String[] s1 = {"hello", "world", "It's me!", "Mario"};
-        //String[] expected1 = {"HELLO", "WORLD", "IT'S ME!", "MARIO"};
+        String[] r1 = {"HELLO", "WORLD", "IT'S ME!", "MARIO"};
         // action
         String[] test = StringArray.capsLock(s1);
         // assertion
         assertThat(test).isNotNull();
         assertThat(test.length).isEqualTo(4);
-        assertThat(test).containsExactly("HELLO", "WORLD", "IT'S ME!", "MARIO").inOrder();
-        /*for (int i=0; i<4; i++) {
-            assertThat(test[i]).isEqualTo(expected1[i]);
-        }*/
+        assertThat(check(r1, test)).isTrue();
     }
 
     @Test
@@ -42,9 +40,9 @@ public class StringArrayTest {
         String[] s2 = {"hello", "world", "It's me!", "Luigi"};
         String[] s3 = {"Bahahahaha!", "It's Wario!!!"};
         //action / assertion
-        assertTrue(StringArray.allEqual(s1, s4));
-        assertFalse(StringArray.allEqual(s1, s3));
-        assertFalse(StringArray.allEqual(s1, s2));
+        assertThat(StringArray.allEqual(s1, s4)).isTrue();
+        assertThat(StringArray.allEqual(s1, s3)).isFalse();
+        assertThat(StringArray.allEqual(s1, s2)).isFalse();
 
     }
 
@@ -59,12 +57,12 @@ public class StringArrayTest {
         //action
         String[] test = StringArray.swap(s1, 1, 3);
         //assertion
-        assertArrayEquals(r1, test);
+        assertThat(check(r1, test)).isTrue();
 
         //action
         test = StringArray.swap(s1, 3, 1);
         //assertion
-        assertArrayEquals(r1, test);
+        assertThat(check(r1, test)).isTrue();
 
         String[] s2 = {"hello", "world"};
         String[] r2 = {"hello", "world"};
@@ -73,12 +71,12 @@ public class StringArrayTest {
         //action
         test = StringArray.swap(s1, 1, 1);
         //assertion
-        assertArrayEquals(r2, test);
+        assertThat(check(r2, test)).isTrue();
 
         //action
         test = StringArray.swap(s1, 0, 1);
         //assertion
-        assertArrayEquals(r3, test);
+        assertThat(check(r3, test)).isTrue();
 
     }
 
@@ -93,7 +91,7 @@ public class StringArrayTest {
         //action
         String[] test = StringArray.reverse(s1);
         //assertion
-        assertArrayEquals(r1, test);
+        assertThat(check(r1, test)).isTrue();
 
         String[] s2 = {"It's me!", "Luigi"};
         String[] r2 = {"Luigi", "It's me!"};
@@ -101,7 +99,7 @@ public class StringArrayTest {
         //action
         test = StringArray.reverse(s2);
         //assertion
-        assertArrayEquals(r2, test);
+        assertThat(check(r2, test)).isTrue();
 
         String[] s3 = {"edge case"};
         String[] r3 = {"edge case"};
@@ -109,7 +107,7 @@ public class StringArrayTest {
         //action
         test = StringArray.reverse(s3);
         //assertion
-        assertArrayEquals(r3, test);
+        assertThat(check(r3, test)).isTrue();
 
     }
 
@@ -124,7 +122,7 @@ public class StringArrayTest {
         //action
         String test = StringArray.combineAll(s1);
         //assertion
-        assertEquals(r1, test);
+        assertThat(test).isEqualTo(r1);
 
         String[] s2 = {"good", "bye"};
         String r2 = "goodbye";
@@ -132,7 +130,7 @@ public class StringArrayTest {
         //action
         test = StringArray.combineAll(s2);
         //assertion
-        assertEquals(r2, test);
+        assertThat(test).isEqualTo(r2);
 
         String[] s3 = {"good"};
         String r3 = "good";
@@ -140,7 +138,7 @@ public class StringArrayTest {
         //action
         test = StringArray.combineAll(s3);
         //assertion
-        assertEquals(r3, test);
+        assertThat(test).isEqualTo(r3);
 
     }
     
@@ -160,8 +158,8 @@ public class StringArrayTest {
         int test = StringArray.searchString(s1, "il");
         
         // assertion
-        assertEquals("while\nsilken\nill\n", bos.toString());
-        assertEquals(3, test);
+        assertThat(bos.toString()).isEqualTo("while\nsilken\nill\n");
+        assertThat(test).equals(3);
 
         // clear output stream
         bos.reset();
@@ -170,8 +168,8 @@ public class StringArrayTest {
         test = StringArray.searchString(s1, "tr");
         
         // assertion
-        assertEquals("actress\ntriple\ntrack\n", bos.toString());
-        assertEquals(3, test);
+        assertThat(bos.toString()).isEqualTo("actress\ntriple\ntrack\n");
+        assertThat(test).equals(3);
         
         // clear output stream
         bos.reset();
@@ -180,7 +178,7 @@ public class StringArrayTest {
         test = StringArray.searchString(s1, "zzz");
         
         // assertion
-        assertEquals(0, test);
+        assertThat(test).equals(0);
 
         // UNDO output binding in System
         System.setOut(originalOut);
@@ -196,10 +194,34 @@ public class StringArrayTest {
         //action
         String test = StringArray.longest(names);
         //assertion
-        assertEquals("creola katherine johnson", test);
+        assertThat(test).isEqualTo("creola katherine johnson");
 
         String[] str2 = {"kid,", "mother", "father"};
         test = StringArray.longest(str2);
-        assertEquals("mother", test);
+        assertThat(test).isEqualTo("mother");
     }
+
+    public static boolean check(String[] expected, String[] actual) {
+        if(actual == null) {
+            System.out.format("Your \"actual\" array is null. Have you implemented the method you are testing?\n\n");
+            return false;
+        }
+        if (expected.length != actual.length) {
+            System.out.format("Array length did not match expected length:\n"
+                    + "      Expected: %d\n"
+                    + "      Got: %d\n",
+                    expected.length, actual.length);
+            return false;
+        }
+        for (int k = 0; k < expected.length; k++) {
+            if (!expected[k].equals(actual[k])) {
+                System.out.format("Array contents different at index %d:\n"
+                        + "    Expected: %d\n"
+                        + "    Got: %d\n",
+                        k, expected[k], actual[k]);
+                return false;
+            }
+        }
+        return true;
+      }
 }
