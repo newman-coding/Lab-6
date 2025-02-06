@@ -1,4 +1,24 @@
+# Compiled class files
 *.class
-*.o
+*.o 
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# IDE-specific files
+.idea/
+.classpath
+.project
+.settings/
 .vscode
-build/*
+build/
+
+# Maven artifacts
+target/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
