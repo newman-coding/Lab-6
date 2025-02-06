@@ -1,6 +1,6 @@
 # Lab-6
 
-Use the starter code provided to complete the following Java classes and their methods. ALL of the following methods should be **NON-DESTRUCTIVE** unless otherwise noted.
+Use the starter code provided to complete the following Java classes and their methods. **ALL** of the following methods should be **NON-DESTRUCTIVE** unless otherwise noted.
 
 ## Part One - NumArray: 
 This class will have a set of methods dealing with arrays of numbers--ints and doubles. Please write the following methods:
@@ -121,5 +121,10 @@ Optional Extra Credit:
 
 (Hint: you may need a helper method or a nested for loop here.)
 
+## Running Tests
+You can run the autograding tests for your code by typing the following command in your terminal:
+```
+gradle test
+```
 
 When you're happy with your code, commit with the message "Lab 6 Submission" and push to GitHub.
