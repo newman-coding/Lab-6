@@ -1,4 +1,4 @@
-package src.test;
+//package test;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 
-import src.main.NumArray;
+//import NumArray;
 
 import java.io.*;
 
@@ -30,22 +30,22 @@ public class NumArrayTest {
     // action
     int test = NumArray.sumUp(t1);
     // assertion
-    assertThat(test).equals(24);
+    assertThat(test).isEqualTo(24);
 
     // action
     test = NumArray.sumUp(t2);
     // assertion
-    assertThat(test).equals(4);
+    assertThat(test == 4).isTrue();
 
     // action
     test = NumArray.sumUp(testNil);
     // assertion
-    assertThat(test).equals(0);
+    assertThat(test == 0).isTrue();;
 
     // action
     test = NumArray.sumUp(testOne);
     // assertion
-    assertThat(test).equals(5);
+    assertThat(test == 5).isTrue();;
 
   }
 
@@ -60,22 +60,22 @@ public class NumArrayTest {
     // action
     int test = NumArray.underTen(t1);
     // assertion
-    assertThat(test).equals(3);
+    assertThat(test == 3).isTrue();
 
     // action
     test = NumArray.underTen(t2);
     // assertion
-    assertThat(test).equals(5);
+    assertThat(test == 5).isTrue();
 
     // action
     test = NumArray.underTen(t3);
     // assertion
-    assertThat(test).equals(3);
+    assertThat(test == 3).isTrue();
 
     // action
     test = NumArray.underTen(t4);
     // assertion
-    assertThat(test).equals(0);
+    assertThat(test == 0).isTrue();
 
   }
 
@@ -209,12 +209,12 @@ public class NumArrayTest {
     // action
     test = NumArray.dotProduct(testOne, testOne);
     // assertion
-    assertThat(test).equals(25);
+    assertThat(test == 25).isTrue();
 
     // action
     test = NumArray.dotProduct(testNil, t2);
     // assertion
-    assertThat(test).equals(0);
+    assertThat(test == 0).isTrue();
 
    }
 
@@ -311,8 +311,7 @@ public class NumArrayTest {
   public void testSubArray(){
     int[] t1 = {2, 3, 5, 7, 9};
     int[] t2 = {0, 1, 1, 2, 3, 5, 8};
-    int[] t3 = {2, 2, 2, 2, 2};
-    int[] t4 = {-1, 1, 0, 2, 4, 6};
+
     // action
     int[] test = NumArray.subArray(t1, 0, 3);
     int[] r1 = {2, 3, 5};

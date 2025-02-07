@@ -4,6 +4,11 @@
 bin/
 build/
 
+# Test files
+gradlew
+gradle
+*.kts
+
 # Package files
 *.jar
 *.war
@@ -24,3 +29,9 @@ target/
 .DS_Store
 Thumbs.db
 
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
