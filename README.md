@@ -62,7 +62,7 @@ Optional Extra Credit: <p>
 
 
 ## Part Two - StringArray:
-This class will have a set of methods dealing with arrays of Strings. Please write the following methods:
+This class will have a set of methods dealing with arrays of Strings. Please write the following methods (make sure that all method names are exactly as written):
 
 1. String[] capsLock(String[] a) – this method should input an array of Strings, and return an array of Strings consisting of the same strings, only in uppercase. Hint: .toUpperCase(). So if you send {"happy", "sad", "Bob"}, it should return {"HAPPY", "SAD", "BOB"}.
 ```java
@@ -122,9 +122,12 @@ Optional Extra Credit:
 (Hint: you may need a helper method or a nested for loop here.)
 
 ## Running Tests
-You can run the autograding tests for your code by typing the following command in your terminal:
+You can run the autograding tests for your code by typing the following command in your VSCode terminal:
 ```
 gradle test
 ```
+This will run all of the tests in the /tests folder. If the tests don't compile, check that all of your StringArray methods are properly named and defined.
+
+If your code is all correct, you'll get a message saying BUILD SUCCESSFUL. Otherwise, you'll get a message saying BUILD FAILED, and you can scroll up through your terminal output to see which methods failed.
 
 When you're happy with your code, commit with the message "Lab 6 Submission" and push to GitHub.
