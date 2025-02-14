@@ -175,22 +175,22 @@ public class NumArrayTest {
     // action
     int test = NumArray.dotProduct(t1, t2);
     // assertion
-    assertThat(test).equals(29);
+    assertThat(test == 29).isTrue();
 
     // action
     test = NumArray.dotProduct(t2, t1);
     // assertion
-    assertThat(test).equals(29);
+    assertThat(test == 29).isTrue();
 
     // action
     test = NumArray.dotProduct(t1, t3);
     // assertion
-    assertThat(test).equals(20);
+    assertThat(test == 20).isTrue();
 
     // action
     test = NumArray.dotProduct(t4, t3);
     // assertion
-    assertThat(test).equals(0);
+    assertThat(test == 0);
 
     // EDGE CASE: set output binding
     PrintStream originalOut = System.out;
@@ -201,7 +201,7 @@ public class NumArrayTest {
     test = NumArray.dotProduct(testArr, t1);
     // assertion
     assertThat(bos.toString()).isNotNull();
-    assertThat(test).equals(Integer.MIN_VALUE);
+    assertThat(test).isEqualTo(Integer.MIN_VALUE);
 
     // UNDO output binding in System
     System.setOut(originalOut);
@@ -230,32 +230,32 @@ public class NumArrayTest {
     // action
     int test = NumArray.minArray(t1);
     // assertion
-    assertThat(test).equals(2);
+    assertThat(test == 2).isTrue();
 
     // action
     test = NumArray.minArray(t2);
     // assertion
-    assertThat(test).equals(1);
+    assertThat(test == 1).isTrue();
 
     // action
     test = NumArray.minArray(t3);
     // assertion
-    assertThat(test).equals(2);
+    assertThat(test == 2).isTrue();
 
     // action
     test = NumArray.minArray(t4);
     // assertion
-    assertThat(test).equals(-1);
+    assertThat(test == -1).isTrue();
 
     // action
     test = NumArray.minArray(testOne);
     // assertion
-    assertThat(test).equals(5);
+    assertThat(test == 5).isTrue();
 
     // action
     test = NumArray.minArray(testNil);
     // assertion
-    assertThat(test).equals(0);
+    assertThat(test == 0).isTrue();
 
   }
 
@@ -270,32 +270,32 @@ public class NumArrayTest {
     // action
     int test = NumArray.maxArray(t1);
     // assertion
-    assertThat(test).equals(5);
+    assertThat(test == 5).isTrue();
 
     // action
     test = NumArray.maxArray(t2);
     // assertion
-    assertThat(test).equals(6);
+    assertThat(test == 6).isTrue();
 
     // action
     test = NumArray.maxArray(t3);
     // assertion
-    assertThat(test).equals(2);
+    assertThat(test == 2).isTrue();
 
     // action
     test = NumArray.maxArray(t4);
     // assertion
-    assertThat(test).equals(1);
+    assertThat(test == 1).isTrue();
 
     // action
     test = NumArray.maxArray(testOne);
     // assertion
-    assertThat(test).equals(5);
+    assertThat(test == 5).isTrue();
 
     // action
     test = NumArray.maxArray(testNil);
     // assertion
-    assertThat(test).equals(0);
+    assertThat(test == 0).isTrue();
   }
    
   @Test
