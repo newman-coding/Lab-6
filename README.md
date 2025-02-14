@@ -122,6 +122,8 @@ Optional Extra Credit:
 (Hint: you may need a helper method or a nested for loop here.)
 
 ## Running Tests
+You can test out your code in the main method of the MyTests.java file. Remember that all of code should be static methods of the NumArray or StringArray class, so you can call your methods with NumArray.methodName() or StringArray.methodName().
+
 You can run the autograding tests for your code by typing the following command in your terminal:
 ```
 gradle test
