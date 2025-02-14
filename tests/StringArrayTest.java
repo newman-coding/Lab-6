@@ -66,7 +66,7 @@ public class StringArrayTest {
         String[] r3 = {"world", "hello"};
 
         //action
-        test = StringArray.swap(s1, 1, 1);
+        test = StringArray.swap(s2, 1, 1);
         //assertion
         assertThat(check(r2, test)).isTrue();
 
