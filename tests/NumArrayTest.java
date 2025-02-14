@@ -319,7 +319,7 @@ public class NumArrayTest {
     assertThat(check(r1, test)).isTrue();
 
     // action
-    test = NumArray.subArray(t2, 2, t2.length - 1);
+    test = NumArray.subArray(t2, 2, t2.length);
     int[] r2 = {1, 2, 3, 5, 8};
     // assertion
     assertThat(check(r2, test)).isTrue();
