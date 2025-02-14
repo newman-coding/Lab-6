@@ -156,7 +156,7 @@ public class StringArrayTest {
         
         // assertion
         assertThat(bos.toString()).isEqualTo("while\nsilken\nill\n");
-        assertThat(test).equals(3);
+        assertThat(test == 3);
 
         // clear output stream
         bos.reset();
@@ -166,7 +166,7 @@ public class StringArrayTest {
         
         // assertion
         assertThat(bos.toString()).isEqualTo("actress\ntriple\ntrack\n");
-        assertThat(test).equals(3);
+        assertThat(test == 3).isTrue();
         
         // clear output stream
         bos.reset();
@@ -175,7 +175,7 @@ public class StringArrayTest {
         test = StringArray.searchString(s1, "zzz");
         
         // assertion
-        assertThat(test).equals(0);
+        assertThat(test == 0).isTrue();
 
         // UNDO output binding in System
         System.setOut(originalOut);
@@ -213,9 +213,9 @@ public class StringArrayTest {
         for (int k = 0; k < expected.length; k++) {
             if (!expected[k].equals(actual[k])) {
                 System.out.format("Array contents different at index %d:\n"
-                        + "    Expected: %d\n"
-                        + "    Got: %d\n",
-                        k, expected[k], actual[k]);
+                        + "    Expected: " + expected[k] + "\n"
+                        + "    Got: " + actual[k] + "\n",
+                        k);
                 return false;
             }
         }
