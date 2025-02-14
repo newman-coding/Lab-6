@@ -190,7 +190,7 @@ public class NumArrayTest {
     // action
     test = NumArray.dotProduct(t4, t3);
     // assertion
-    assertThat(test == 0);
+    assertThat(test == 0).isTrue();
 
     // EDGE CASE: set output binding
     PrintStream originalOut = System.out;
