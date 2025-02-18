@@ -153,9 +153,10 @@ public class StringArrayTest {
 
         // action
         int test = StringArray.searchString(s1, "il");
+        String result = bos.toString().replaceAll("\r\n|\r","\n");
         
         // assertion
-        assertThat(bos.toString()).isEqualTo("while%nsilken%nill%n");
+        assertThat(result).isEqualTo("while\nsilken\nill\n");
         assertThat(test==3).isTrue();
 
         // clear output stream
@@ -163,9 +164,10 @@ public class StringArrayTest {
 
         // action
         test = StringArray.searchString(s1, "tr");
+        result = bos.toString().replaceAll("\r\n|\r","\n");
         
         // assertion
-        assertThat(bos.toString()).isEqualTo("actress%ntriple%ntrack%n");
+        assertThat(result).isEqualTo("actress\ntriple\ntrack\n");
         assertThat(test == 3).isTrue();
         
         // clear output stream
