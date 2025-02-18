@@ -155,7 +155,7 @@ public class StringArrayTest {
         int test = StringArray.searchString(s1, "il");
         
         // assertion
-        assertThat(bos.toString()).isEqualTo("while\nsilken\nill\n");
+        assertThat(bos.toString()).isEqualTo("while%nsilken%nill%n");
         assertThat(test==3).isTrue();
 
         // clear output stream
@@ -165,7 +165,7 @@ public class StringArrayTest {
         test = StringArray.searchString(s1, "tr");
         
         // assertion
-        assertThat(bos.toString()).isEqualTo("actress\ntriple\ntrack\n");
+        assertThat(bos.toString()).isEqualTo("actress%ntriple%ntrack%n");
         assertThat(test == 3).isTrue();
         
         // clear output stream
