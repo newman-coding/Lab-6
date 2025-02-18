@@ -1,4 +1,3 @@
-//package test;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 
@@ -8,9 +7,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-
-
-//import NumArray;
 
 import java.io.*;
 
@@ -190,7 +186,7 @@ public class NumArrayTest {
     // action
     test = NumArray.dotProduct(t4, t3);
     // assertion
-    assertThat(test == 0);
+    assertThat(test == 0).isTrue();
 
     // EDGE CASE: set output binding
     PrintStream originalOut = System.out;
@@ -319,7 +315,7 @@ public class NumArrayTest {
     assertThat(check(r1, test)).isTrue();
 
     // action
-    test = NumArray.subArray(t2, 2, t2.length - 1);
+    test = NumArray.subArray(t2, 2, t2.length);
     int[] r2 = {1, 2, 3, 5, 8};
     // assertion
     assertThat(check(r2, test)).isTrue();

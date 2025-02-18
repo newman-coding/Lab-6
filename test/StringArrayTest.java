@@ -66,12 +66,12 @@ public class StringArrayTest {
         String[] r3 = {"world", "hello"};
 
         //action
-        test = StringArray.swap(s1, 1, 1);
+        test = StringArray.swap(s2, 1, 1);
         //assertion
         assertThat(check(r2, test)).isTrue();
 
         //action
-        test = StringArray.swap(s1, 0, 1);
+        test = StringArray.swap(s2, 0, 1);
         //assertion
         assertThat(check(r3, test)).isTrue();
 
@@ -156,7 +156,7 @@ public class StringArrayTest {
         
         // assertion
         assertThat(bos.toString()).isEqualTo("while\nsilken\nill\n");
-        assertThat(test == 3);
+        assertThat(test==3).isTrue();
 
         // clear output stream
         bos.reset();
