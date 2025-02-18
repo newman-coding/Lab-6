@@ -34,10 +34,6 @@ public class NumArray {
         return 0;
     }
 
-    public static void printArray(int[] arr){ 
-
-    }
-
     public static int randomEntry(int[] arr){ 
         return 0;
     }
